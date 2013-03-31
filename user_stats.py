@@ -16,6 +16,8 @@ for line in fileinput.input():
     else:
         userdict[username][date] += 1
     
+print "\t".join(("username", "date", "count"))
+
 for username in sorted(userdict):
     for date in sorted(userdict[username]):
         print "\t".join((username, date, str(userdict[username][date])))
