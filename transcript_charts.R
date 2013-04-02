@@ -48,7 +48,7 @@ library(ggplot2)
   #b <- b + scale_fill_brewer(palette=3)
   b <- b + scale_y_continuous(minor_breaks = seq(0,300,20))
 
-  new_theme <- theme_update(axis.text.x = element_text(angle = 90,
+  bar_theme <- theme_update(axis.text.x = element_text(angle = 90,
      hjust = 1), panel.grid.major = element_line(color = "grey80"),
      panel.grid.minor.x = element_blank(), panel.grid.major.x = element_blank(),
      panel.grid.minor.y = element_line( size=.1, color = "grey90"), panel.background = element_blank(),
@@ -70,14 +70,13 @@ library(ggplot2)
   s <- s + scale_y_continuous()
   s <- s + scale_x_continuous()
 
-  new_theme <- theme_update(axis.text.x = element_text(angle = 90,
+  scatter_theme <- theme_update(axis.text.x = element_text(angle = 90,
      hjust = 1), 
-     panel.grid.major.x = element_line(color = "grey80"),
-     panel.grid.major.y = element_line(color = "grey80"),
-     panel.grid.minor.x = element_line( size=.1, color = "grey90"), 
-     panel.grid.minor.y = element_line( size=.1, color = "grey90"), 
+     panel.grid.major = element_blank(),
+     panel.grid.minor = element_blank(),
      panel.background = element_blank(),
-     axis.ticks = element_blank())
+     axis.line = element_line(color = "grey50"),
+     axis.ticks = element_line(color = "grey50"))
 
   s
 
@@ -94,7 +93,7 @@ library(ggplot2)
   b <- b + geom_bar(stat = "identity", aes(fill=chatcount3))
   b <- b + scale_y_continuous(minor_breaks = seq(0,1500,50))
 
-  new_theme <- theme_update(axis.text.x = element_text(angle = 90, size=6,
+  bar_theme <- theme_update(axis.text.x = element_text(angle = 90, size=6,
      hjust = 1), panel.grid.major = element_line(color = "grey80"),
      panel.grid.minor.x = element_blank(), panel.grid.major.x = element_blank(),
      panel.grid.minor.y = element_line( size=.1, color = "grey90"), panel.background = element_blank(),
@@ -114,14 +113,13 @@ library(ggplot2)
   s <- s + geom_text(data=subset(userdata, chatcount3 > 7), vjust=-1, size=2)
   # Subset shows labels only for users with more than 7 chats
 
-  new_theme <- theme_update(axis.text.x = element_text(angle = 90,
+  scatter_theme <- theme_update(axis.text.x = element_text(angle = 90,
      hjust = 1), 
-     panel.grid.major.x = element_line(color = "grey80"),
-     panel.grid.major.y = element_line(color = "grey80"),
-     panel.grid.minor.x = element_line( size=.1, color = "grey90"), 
-     panel.grid.minor.y = element_line( size=.1, color = "grey90"), 
+     panel.grid.major = element_blank(),
+     panel.grid.minor = element_blank(),
      panel.background = element_blank(),
-     axis.ticks = element_blank())
+     axis.line = element_line(color = "grey50"),
+     axis.ticks = element_line(color = "grey50"))
 
   s
 
