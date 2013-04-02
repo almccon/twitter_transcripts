@@ -2,7 +2,7 @@
 
 library(ggplot2)
 
-  inputfile = paste0('output2.tsv')
+  inputfile = paste0('output3.tsv')
   cat("reading from file", inputfile, "\n")
   frame <- read.table(inputfile, header=TRUE, sep="\t", quote="", comment.char="") # avoid catching "#" or "'"
   
@@ -62,13 +62,18 @@ library(ggplot2)
   outputfile = 'geowebchat_over_time_scatter.pdf'
   pdf(outputfile, 10, 7)   # Create a PDF of 10 inches wide by 7 inches tall
 
-  s <- ggplot(chatdata, aes(x=tweetcount2, y=usercount2))
+  s <- ggplot(chatdata, aes(x=tweetcount2, y=usercount2, label=date2))
   s <- s + labs(title = "#geowebchat participation over time")
   s <- s + labs(x = "number of tweets", y = "number of participants")
   s <- s + geom_point()
+  s <- s + geom_text(data=chatdata, vjust=-1, size=2)
+  s <- s + scale_y_continuous()
+  s <- s + scale_x_continuous()
 
   new_theme <- theme_update(axis.text.x = element_text(angle = 90,
-     hjust = 1), panel.grid.major = element_line(color = "grey80"),
+     hjust = 1), 
+     panel.grid.major.x = element_line(color = "grey80"),
+     panel.grid.major.y = element_line(color = "grey80"),
      panel.grid.minor.x = element_line( size=.1, color = "grey90"), 
      panel.grid.minor.y = element_line( size=.1, color = "grey90"), 
      panel.background = element_blank(),
@@ -87,7 +92,7 @@ library(ggplot2)
   b <- b + labs(title = "#geowebchat participation by user")
   b <- b + labs(x = NULL, y = "number of tweets", fill = "number\nof chats")
   b <- b + geom_bar(stat = "identity", aes(fill=chatcount3))
-  b <- b + scale_y_continuous(minor_breaks = seq(0,1000,50))
+  b <- b + scale_y_continuous(minor_breaks = seq(0,1500,50))
 
   new_theme <- theme_update(axis.text.x = element_text(angle = 90, size=6,
      hjust = 1), panel.grid.major = element_line(color = "grey80"),
@@ -102,13 +107,17 @@ library(ggplot2)
   outputfile = 'geowebchat_by_user_scatter.pdf'
   pdf(outputfile, 10, 7)   # Create a PDF of 10 inches wide by 7 inches tall
 
-  s <- ggplot(userdata, aes(x=tweetcount3, y=chatcount3))
+  s <- ggplot(userdata, aes(x=tweetcount3, y=chatcount3, label=username3))
   s <- s + labs(title = "#geowebchat participation by user")
   s <- s + labs(x = "number of tweets", y = "number of chats")
   s <- s + geom_point()
+  s <- s + geom_text(data=subset(userdata, chatcount3 > 7), vjust=-1, size=2)
+  # Subset shows labels only for users with more than 7 chats
 
   new_theme <- theme_update(axis.text.x = element_text(angle = 90,
-     hjust = 1), panel.grid.major = element_line(color = "grey80"),
+     hjust = 1), 
+     panel.grid.major.x = element_line(color = "grey80"),
+     panel.grid.major.y = element_line(color = "grey80"),
      panel.grid.minor.x = element_line( size=.1, color = "grey90"), 
      panel.grid.minor.y = element_line( size=.1, color = "grey90"), 
      panel.background = element_blank(),
