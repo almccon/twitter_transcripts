@@ -19,6 +19,11 @@ lines = p.split(string)
 
 lines.reverse() # reverses in place
 
+# Create a dictionary of lines to track duplicates.
+# We have to do it this way because duplicates may not be adjacent to one another.
+# Duplicates occur because of the way hootsuite currently displays RTs 
+linedict = {} 
+
 for line in lines:
     # I should probably move all these compile stmts outside the loop
 
@@ -68,7 +73,12 @@ for line in lines:
     p = re.compile('…') 
     line = p.sub('...', line)
 
-    print line
+    if line in linedict:
+        # We have seen an identical line. Do not print.
+        linedict[line] += 1
+    else:
+        print line
+        linedict[line] = 1
 
     if (debug): 
         print "\n"
