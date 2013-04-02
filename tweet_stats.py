@@ -1,6 +1,24 @@
 #! /usr/bin/env python
 # coding: utf8
 
+"""
+Examine HTML twitter logs and extract username and date for each tweet.
+
+This file takes an arbitrary number of files as input. These files must
+be in a format outputted by the process_hootsuite.py script.
+
+This file examines each line and extracts three bits of information:
+The username (author of the tweet)
+The date (actually this is taken from the filename.
+The timestamp of the tweet (could be in one of several different formats)
+
+It then outputs tab-separated lines to STDOUT, one for each tweet, with
+no header line. The output is suitable to be fed into the user_stats.py 
+script.
+
+Suggested usage: ./tweet_stats.py files | ./user_stats.py > output.tsv
+"""
+
 import fileinput
 import re
 

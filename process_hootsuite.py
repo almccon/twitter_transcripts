@@ -1,6 +1,25 @@
 #! /usr/bin/env python
 # coding: utf8
 
+"""
+Process a set of tweets copied (in HTML) from hootsuite.
+
+This file reads from STDIN a copy-and-pasted file extracted from hootsuite.
+Because hootsuite's format has changed over time, earlier versions of this
+script would have produced slightly differently formatted output.
+
+This script reverses the order of the lines, so the earliest tweets
+come first. It also removes any duplicated lines (the result of RTs)
+
+It prints the result on STDOUT.
+
+Suggested usage: cat twitter_transcript_2013-04-02.html | ./process_hootsuite.py > twitter_transcript_2013-04-02rev.html
+
+I still recommend you check the output to look for any errors in the
+conversion process (particularly with character encodings), or manually 
+delete irrelevant tweets.
+"""
+
 import sys
 import re
 
