@@ -2,7 +2,7 @@
 
 library(ggplot2)
 
-  inputfile = paste0('output3.tsv')
+  inputfile = paste0('output4.tsv')
   cat("reading from file", inputfile, "\n")
   frame <- read.table(inputfile, header=TRUE, sep="\t", quote="", comment.char="") # avoid catching "#" or "'"
   
@@ -27,8 +27,11 @@ library(ggplot2)
   chatdata <- merge(aggdate, agg_users_per_chat)
   userdata <- merge(agguser, agg_chats_per_user)
 
-  outputfile = 'geowebchat_over_time_chart.pdf'
-  pdf(outputfile, 10, 7)   # Create a PDF of 10 inches wide by 7 inches tall
+  #outputfile = 'geowebchat_over_time_chart.pdf'
+  #pdf(outputfile, 10, 7)   # Create a PDF of 10 inches wide by 7 inches tall
+
+  outputfile = 'geowebchat_over_time_chart.png'
+  png(outputfile, 800, 600)   # Create a PNG of 800 px wide by 600 px tall
 
 
   # Non-ggplot style:
@@ -59,8 +62,11 @@ library(ggplot2)
 
   dev.off()
 
-  outputfile = 'geowebchat_over_time_scatter.pdf'
-  pdf(outputfile, 10, 7)   # Create a PDF of 10 inches wide by 7 inches tall
+  #outputfile = 'geowebchat_over_time_scatter.pdf'
+  #pdf(outputfile, 10, 7)   # Create a PDF of 10 inches wide by 7 inches tall
+
+  outputfile = 'geowebchat_over_time_scatter.png'
+  png(outputfile, 800, 600)   # Create a PNG of 800 px wide by 600 px tall
 
   s <- ggplot(chatdata, aes(x=tweetcount2, y=usercount2, label=date2))
   s <- s + labs(title = "#geowebchat participation over time")
@@ -82,8 +88,11 @@ library(ggplot2)
 
   dev.off()
 
-  outputfile = 'geowebchat_by_user_chart.pdf'
-  pdf(outputfile, 10, 7)   # Create a PDF of 10 inches wide by 7 inches tall
+  #outputfile = 'geowebchat_by_user_chart.pdf'
+  #pdf(outputfile, 10, 7)   # Create a PDF of 10 inches wide by 7 inches tall
+
+  outputfile = 'geowebchat_by_user_chart.png'
+  png(outputfile, 800, 600)   # Create a PNG of 800 px wide by 600 px tall
 
   attach(userdata)
 
@@ -103,8 +112,11 @@ library(ggplot2)
 
   dev.off()
 
-  outputfile = 'geowebchat_by_user_scatter.pdf'
-  pdf(outputfile, 10, 7)   # Create a PDF of 10 inches wide by 7 inches tall
+  #outputfile = 'geowebchat_by_user_scatter.pdf'
+  #pdf(outputfile, 10, 7)   # Create a PDF of 10 inches wide by 7 inches tall
+
+  outputfile = 'geowebchat_by_user_scatter.png'
+  png(outputfile, 800, 600)   # Create a PNG of 800 px wide by 600 px tall
 
   s <- ggplot(userdata, aes(x=tweetcount3, y=chatcount3, label=username3))
   s <- s + labs(title = "#geowebchat participation by user")
