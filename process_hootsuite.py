@@ -86,11 +86,28 @@ for line in lines:
     # remove <a class="_previewLink...  
     p = re.compile('<\/a><a href.*?class="_previewLink.*?><\/a>') 
     line = p.sub('</a>', line)
+   
+    # Replace tabs with spaces 
+    p = re.compile('\t')
+    line = p.sub(' ', line)
+    
+    # Remove repeated spaces (if there are two or more, replace with two)
+    p = re.compile('\s+')
+    line = p.sub(' ', line)
 
     # clean up the stupid "..." symbol
     #p = re.compile(u"\xe2") 
     p = re.compile('…') 
     line = p.sub('...', line)
+    
+    p = re.compile('“') 
+    line = p.sub('"', line)
+
+    p = re.compile('”') 
+    line = p.sub('"', line)
+
+    p = re.compile('’') 
+    line = p.sub("'", line)
 
     if line in linedict:
         # We have seen an identical line. Do not print.
