@@ -17,6 +17,8 @@ username, date, count
 
 These are also printed as a header line, making the output suitable as
 input to R.
+
+Suggested usage: ./tweet_stats.py files | ./user_stats.py > output.tsv
 """
 
 import fileinput
