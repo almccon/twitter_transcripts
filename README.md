@@ -13,6 +13,7 @@ Then, for all transcripts:
 
 ./tweet_stats.py clean_tweets_reversed_*.html | ./user_stats.py > output.tsv
 
+Detailed steps:
 
 1) Copy html source of tweets from HootSuite Dashboard. 
 
