@@ -24,3 +24,10 @@ Detailed steps:
 4) Pipe the output of tweet_stats.py into user_stats.py (which counts number of tweets for each date and user and outputs tsv)
 
 5) Generate charts using transcript_charts.R and the tsv output of user_stats.py
+
+Example R output:
+
+![geowebchat by user chart](chart_examples/geowebchat_by_user_chart.png)
+![geowebchat by user scatter](chart_examples/geowebchat_by_user_scatter.png)
+![geowebchat over time chart](chart_examples/geowebchat_over_time_chart.png)
+![geowebchat over time scatter](chart_examples/geowebchat_over_time_scatter.png)
