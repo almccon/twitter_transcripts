@@ -27,7 +27,7 @@ Detailed steps:
 
 Example R output:
 
-![geowebchat by user chart](chart_examples/geowebchat_by_user_chart.png)
-![geowebchat by user scatter](chart_examples/geowebchat_by_user_scatter.png)
 ![geowebchat over time chart](chart_examples/geowebchat_over_time_chart.png)
 ![geowebchat over time scatter](chart_examples/geowebchat_over_time_scatter.png)
+![geowebchat by user chart](chart_examples/geowebchat_by_user_chart.png)
+![geowebchat by user scatter](chart_examples/geowebchat_by_user_scatter.png)
