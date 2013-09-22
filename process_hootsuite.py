@@ -56,7 +56,7 @@ for line in lines:
     line = p.sub('', line)
 
     p = re.compile('^.*<img src') # ^ to match beginning of string
-    line = p.sub('<br clear=all><p><img height="48px" align="left" src', line)
+    line = p.sub('<br clear=all><p><img height="48px" width="48px" align="left" src', line)
 
     p = re.compile('<p class.*?>') # .*? is non-greedy version of .*
     line = p.sub('', line)
