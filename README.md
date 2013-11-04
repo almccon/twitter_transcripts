@@ -1,19 +1,28 @@
 twitter_transcripts
 ===================
 
-Tools for processing twitter transcripts
+Tools for processing twitter transcripts.
+Warning: these scripts are awful and ugly, so if you can possibly use anything else, please do so.
 
 Workflow:
 
 For each transcript: 
 
-cat tweets_2013-01-01.html | ./process_hootsuite.py > clean_tweets_reversed_2013-01-01.html
+Load up the conversation in [Hootsuite Dashboard](https://hootsuite.com/dashboard/), select all the tweets you want to archive, and then view the source of this selection. Save the HTML source to a file.
 
-Then, for all transcripts:
+Then, pipe this saved html file to the process_hootsuite.py script like so:
 
-./tweet_stats.py clean_tweets_reversed_*.html | ./user_stats.py > output.tsv
+  cat tweets_2013-01-01.html | ./process_hootsuite.py > clean_tweets_reversed_2013-01-01.html
+  
+The resulting cleaned an reversed html is suitable for posting on the web, or pasting into an existing html document.
 
-Detailed steps:
+If that's all you want to do, you're done. But if you want to use the transcript analysis tools, continue on:
+
+For all transcript files:
+
+  ./tweet_stats.py clean_tweets_reversed_*.html | ./user_stats.py > output.tsv
+
+Detailed explanation of steps:
 
 1) Copy html source of tweets from HootSuite Dashboard. 
 
