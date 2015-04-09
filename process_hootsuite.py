@@ -100,6 +100,7 @@ for line in lines:
     p = re.compile('…') 
     line = p.sub('...', line)
     
+    #Really, I should have to do all this if I do my character encoding correctly
     p = re.compile('“') 
     line = p.sub('"', line)
 
@@ -107,6 +108,9 @@ for line in lines:
     line = p.sub('"', line)
 
     p = re.compile('’') 
+    line = p.sub("'", line)
+
+    p = re.compile('‘') 
     line = p.sub("'", line)
 
     if line in linedict:
